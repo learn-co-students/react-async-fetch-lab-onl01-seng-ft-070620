@@ -10,24 +10,16 @@ export default class App extends Component {
         fetch('http://api.open-notify.org/astros.json')
             .then(r => r.json())
             .then(astrosObj => {
-                for (let astro of astrosObj.people) {
-                    this.addAstronaut(astro)
-                }
+                this.setState({
+                    astronauts: astrosObj.people
+                })
             })
-    }
-
-    addAstronaut = (astro) => {
-        debugger
-        let newAstro = <div>{astro.name} - {astro.craft}</div>
-        this.setState(prevState => ({
-            astronauts: prevState.astronauts.push(newAstro)
-        }))
     }
 
     render() {
         return (
             <div>
-                {this.state.astronauts}
+                {this.state.astronauts.map(astro => <h4>{astro.name} - {astro.craft}</h4>)}
             </div>
         )
     }
