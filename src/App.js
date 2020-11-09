@@ -19,9 +19,9 @@ export default class App extends React.Component {
   render() {
     return (
       <ul>
-        {this.state.people.map(person => <li>{person.name}</li>)}
+        { this.state.people.map(person => <li>{person.name}</li>) }
       </ul>
     )
   }
-  
+
 }
